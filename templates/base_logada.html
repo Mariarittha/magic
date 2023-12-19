@@ -28,29 +28,7 @@
 
   <!-- Template Main CSS File -->
   <link href="{% static 'css/style.css' %}" rel="stylesheet">
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
-
-  <!-- Fonte -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
-
-  <!-- Estilos personalizados -->
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
-  <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/bf7e05c402.js" crossorigin="anonymous"></script>
-
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Parallax -->
-  <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
-
-
+  
 
   <!-- =======================================================
   * Template Name: Ninestars
@@ -100,9 +78,7 @@
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#contact">Contato</a></li>
-          <li><a class="getstarted scrollto" href="{% url 'account_login' %}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
-          </svg> Entrar</a></li>
+          <li><a class="getstarted scrollto" href="#">{{ request.user.username }}</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -111,13 +87,58 @@
   </header><!-- End Header -->
 
 
+    <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
 
-{% block body %}
-  
-{% endblock %}
-  
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+          <h1>Conheça já o quilombo das <strong>filomenas</strong>!</h1>
+          <h2>Reserve já seu pacote e tenha experiencias incriveis!  </h2>
+          <div>
+            <a href="#about" class="btn-get-started scrollto">Entrar</a>
+          </div>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img">
+          <img src=" {% static 'img/logo.png' %}" class="img-fluid animated" alt="">
+        </div>
+      </div>
+    </div>
 
+  </section><!-- End Hero -->
 
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="row justify-content-between">
+          <div class="col-lg-5 d-flex align-items-center justify-content-center about-img">
+            <img src="{% static 'img/fil.jpg' %}" class="img-fluid" alt="" data-aos="zoom-in">
+          </div>
+          <div class="col-lg-6 pt-5 pt-lg-0">
+            <h3 data-aos="fade-up">Voluptatem dignissimos provident quasi</h3>
+            <p data-aos="fade-up" data-aos-delay="100">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+            </p>
+            <div class="row">
+              <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <i class="bx bx-receipt"></i>
+                <h4>Corporis voluptates sit</h4>
+                <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+              </div>
+              <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <i class="bx bx-cube-alt"></i>
+                <h4>Ullamco laboris nisi</h4>
+                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
 
     <!-- ======= Services Section ======= -->
     <section id="services" class="services section-bg">
@@ -934,13 +955,7 @@
 <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
 <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
 
-<script>
-  // Aguarde até que o conteúdo da página esteja totalmente carregado
-  document.addEventListener("DOMContentLoaded", function() {
-    // Inicialize o AOS
-    AOS.init();
-  });
-</script>
+
 
 <!-- Template Main JS File -->
 <script src="{% static 'js/main.js' %}"></script>

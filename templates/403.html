@@ -1,0 +1,25 @@
+{% extends 'base_logada.html' %}
+{% load static %}
+{% block title %}Forbidden (403){% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card" style="background-color: #D2B48C;"> <!-- Defina a cor marrom claro que deseja -->
+                <div class="card-body">
+                    <h1 class="text-center">Forbidden (403)</h1>
+                    <p class="text-center">{% if exception %}{{ exception }}{% else %}Você não tem permissão para acessar esta página.{% endif %}</p>
+                    <div class="row justify-content-center mt-4">
+                        <div class="col-lg-6 col-md-8 col-sm-10 col-12 text-center"> <!-- Centralize o botão e o texto -->
+                            <a class="btn btn-secondary" href="{% url 'filomenas:home2' %}" role="button">
+                                <i class="fas fa-chevron-left mr-2" aria-hidden="true"></i>Voltar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
