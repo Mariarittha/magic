@@ -6,34 +6,42 @@
  <!-- ======= Team Section ======= -->
  <section id="team" class="team">
     <div class="container">
-
+<br><br>
       <div class="section-title" data-aos="fade-up">
         <h2>Filomenas</h2>
         <p>Nossas Filomenas</p>
       </div>
 
       <div class="row">
+        {% for filomena in filomenas %}
+        <h5>Número de Filomenas: {{ filomenas.count }}</h5>
+<br><br>
 
-        <div class="col-xl-3 col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
-          <div class="member">
-            <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
-            <div class="member-info">
-              <div class="member-info-content">
-                <h4>Walter White</h4>
-                <span>Chief Executive Officer</span>
+          <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="card h-100">
+              <img src="{{ filomena.imagem.url }}" class="card-img-top" alt="{{ filomena.nome }}">
+              <div class="card-body">
+                <h6 class="card-title"><strong>Nome:</strong> {{ filomena.nome }}</h6>
+    <p class="card-text">Idade: {{ filomena.idade }}</p>
+    <p class="card-text">Descrição: {{ filomena.descricao }}</p>
+
+    <p class="card-text">Email: {{ filomena.email }}</p>
+    <p class="card-text">Telefone: {{ filomena.telefone }}</p>
               </div>
-              <div class="social">
-                <a href=""><i class="bi bi-twitter"></i></a>
-                <a href=""><i class="bi bi-facebook"></i></a>
-                <a href=""><i class="bi bi-instagram"></i></a>
-                <a href=""><i class="bi bi-linkedin"></i></a>
+              <div class="card-footer text-center">
+                <div class="social-icons">
+                <a href="#" class="social-icon"><i class="bi bi-whatsapp" style="font-size: 24px; margin-right: 30px;"></i></a>
+                <a href="#" class="social-icon"><i class="bi bi-facebook" style="font-size: 24px; margin-right: 30px;"></i></a>
+                <a href="#" class="social-icon"><i class="bi bi-instagram" style="font-size: 24px; margin-right: 30px;"></i></a>
+              </div>
+
               </div>
             </div>
           </div>
-        </div>
+        {% endfor %}
 
+      </div>
     </div>
   </section><!-- End Team Section -->
 
 {% endblock body %}
-    

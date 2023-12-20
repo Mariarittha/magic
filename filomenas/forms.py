@@ -28,13 +28,15 @@ class HospedeForm(forms.ModelForm):
 class FilomenasForm(forms.ModelForm):
     class Meta:
         model = Filomenas
-        fields = ['nome', 'idade', 'imagem', 'email', 'telefone']
+        fields = ['nome', 'idade', 'imagem', 'email', 'telefone', 'descricao']
         widgets = {
             'nome': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nome'}),
             'idade': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Idade'}),
             'imagem': forms.ClearableFileInput(attrs={'class': 'form-control'}),
             'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'}),
             'telefone': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Telefone'}),
+            'descricao': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Descrição da Estadia'}),
+
         }
 
 class EstadiaForm(forms.ModelForm):

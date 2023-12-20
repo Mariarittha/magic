@@ -1,0 +1,346 @@
+{% extends 'base_logada.html' %}
+{% load static %}
+
+
+{% block body %}
+   
+<body>
+    
+<style>
+    .text-orange {
+        background-color: #E28743; /* Laranja queimado */
+        transition: color 0.3s ease; /* Adicionando uma transição suave para a mudança de cor */
+        font-size: 16px;
+    }
+  
+    .text-orange:hover {
+        background-color: #FF8C00; /* Mudança de cor ao passar o mouse por cima */
+    }
+    .text-orangee{
+        color: #E28743;
+    }
+  </style>
+      
+    <!-- {% if messages %}
+      {% for message in messages %}
+        <div{% if message.tags %} class="{{ message.tags }} p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3 m-4 text-center"{% endif %}>
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %} -->
+    <br><br>
+    <img src="{% static 'img/estampa.png' %}" alt="FOTO-DO-TERREIRO" style="width: 100%; filter: blur(1px); height: 20px;" />
+  
+  
+
+   <!-- ======= Portfolio Section ======= -->
+   <section id="portfolio" class="portfolio">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>Dashbore</h2>
+        <p>Área administrativa</p>
+      </div>
+      <div class="container text-center">
+        <div class="row row-cols-2 mt-3">
+          {% for estadia in estadias %}
+            <div class="col-md-4">
+              <div class="m-5">
+                <div class="card" style="width: 18rem;">
+                  <img src="{{ estadia.imagem.url }}" alt="Imagem da Estadia" >
+                  <div class="card-body">
+                    <h5 class="card-title text-orangee">Nome da Estadia: <strong>{{ estadia.nome_estadia }}</strong></h5>
+                    <p class="card-text">Descrição: {{ estadia.descricao_estadia }}</p>
+                    <p class="card-text">Duração: {{estadia.duracao}}</p>
+                    <p class="card-text">Localização: {{estadia.localizacao}}</p>
+                    <p class="card-text">Valor: {{estadia.valor}}</p>
+                    <p class="card-text">Programação: {{estadia.programacao}}</p>
+    
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% empty %}
+            <div class="col-md-12">
+              <p class="text-h1">Não existem estadias cadastradas.</p>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section><!-- End Portfolio Section -->
+
+   
+  
+   
+  
+  <style>
+      .product-container {
+          background-color: #fff;
+          border: 1px solid #ddd;
+          border-radius: 10px;
+          margin-top: 20px;
+      }
+  
+      .product-image {
+          border-radius: 10px 0 0 10px;
+      }
+  
+      .product-info {
+          padding: 20px;
+      }
+  
+      .text-orange {
+          color: #E28743;
+      }
+  
+      .text-orangee {
+          background-color: #E28743;
+          color: white;
+      }
+  
+      .product-price {
+          font-size: 1.5rem;
+          color: #E28743; /* laranja */
+      }
+  
+      .product-description {
+          margin-top: 20px;
+      }
+  
+      .btn-buy, .btn-back {
+          width: 100%;
+          margin-top: 20px;
+      }
+  
+      table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-top: 20px;
+      }
+  
+      th, td {
+          border: 1px solid #ddd;
+          padding: 15px;
+          text-align: center; /* Ajuste para centralizar o texto */
+      }
+  
+      th {
+          background-color: #E28743; /* laranja */
+          color: white;
+      }
+  </style>
+
+
+<style>
+    .pagination-container {
+        margin-top: 20px;
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+    }
+
+    .page-item {
+        margin: 0 5px;
+    }
+
+    .page-link {
+        color: #E28743;
+        background-color: #fff;
+        border: 1px solid #E28743;
+    }
+
+    .page-link:hover,
+    .page-link:focus {
+        color: #fff;
+        background-color: #E28743;
+        border: 1px solid #E28743;
+    }
+
+    .page-item.active .page-link {
+        z-index: 3;
+        color: #fff;
+        background-color: #E28743;
+        border: 1px solid #E28743;
+    }
+</style>
+
+
+
+  <div class="container text-center">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col">
+            <div class="pagination-container">
+                <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page=1&search={{ request.GET.search }}" aria-label="First">
+                                <span aria-hidden="true">&laquo;&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}&search={{ request.GET.search }}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    {% endif %}
+
+                    {% for pg in page_obj.paginator.page_range %}
+                        <li class="page-item {% if page_obj.number == pg %}active{% endif %}">
+                            <a class="page-link" href="?page={{ pg }}&search={{ request.GET.search }}">{{ pg }}</a>
+                        </li>
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.next_page_number }}&search={{ request.GET.search }}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}&search={{ request.GET.search }}" aria-label="Last">
+                                <span aria-hidden="true">&raquo;&raquo;</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+<br><br>
+  
+<img src="{% static 'img/estampa.png' %}" alt="FOTO-DO-TERREIRO" style="width: 100%; filter: blur(1px); height: 20px;" />
+<div class="container mt-4">
+    <h2 class="text-center text-orangee">PAINEL</h2>
+    <div class="table-responsive mt-4">
+        <table class="table table-striped table-bordered table-hover">
+            <thead class="text-orange">
+                <tr>
+                    <th scope="col">Imagem</th>
+                    <th scope="col">Nome da Estadia</th>
+                    <th scope="col">Duração</th>
+                    <th scope="col">Localização</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for estadia in estadias %}
+                    <tr>
+                        <td>
+                            {% if estadia.imagem %}
+                                <img src="{{ estadia.imagem.url }}" alt="Imagem da Estadia" width="150px" height="100px" class="img-thumbnail">
+                            {% else %}
+                                Sem imagem
+                            {% endif %}
+                        </td>
+                        <td>{{ estadia.nome_estadia }}</td>
+                        <td>{{ estadia.duracao }}</td>
+                        <td>{{ estadia.localizacao }}</td>
+                        <td>{{ estadia.valor }}</td>
+                        <td>
+                            <a class="btn btn-warning" href="#" title="Editar">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                                </svg>
+                            </a>
+                            <button class="btn btn-danger" type="button" aria-label="excluir" title="excluir"
+                                data-bs-toggle="modal" data-bs-target="#deleteModal" data-estadia-pk="{{ estadia.pk }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3"
+                                    viewBox="0 0 16 16">
+                                    <path
+                                        d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5" />
+                                </svg>
+                            </button>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="6" class="text-center">
+                            <p>Não existem estadias cadastradas.</p>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal de Exclusão -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="{% static 'img/logo.png' %}" alt="" class="rounded-circle" style="width: 80px; height: 70px;">
+                <h5 class="modal-title" id="deleteModalLabel"><strong>Filomenas</strong></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body">
+                <p>Você tem certeza de que deseja apagar esta estadia?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" id="confirmDelete">Excluir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Adiciona um ouvinte de evento para acionar a submissão do formulário ao clicar em Excluir
+    document.getElementById('confirmDelete').addEventListener('click', function () {
+        document.getElementById('deleteForm').submit();
+    });
+</script>
+
+<!-- Formulário de Exclusão -->
+<form id="deleteForm" method="post" action="#" style="display: none;">
+    {% csrf_token %}
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {% endif %}
+</form>
+
+  
+      <nav class="br-pagination mt-3" aria-label="Paginação de resultados">
+          <!-- Adicione a lógica de paginação aqui se necessário -->
+      </nav>
+      <div class="row justify-content-between mt-6">
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+              <a class="btn btn-secondary btn-block" href="#" role="button">
+                  <i class="fas fa-chevron-left mr-2"></i>Voltar
+              </a>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12 mt-2 mt-sm-0">
+              <a href="{% url 'criar'%}" class="btn text-orangee btn-block" role="button">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                      <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                      <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                  </svg> Cadastrar Estadia
+              </a>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12 mt-2 mt-sm-0">
+              <a href="{% url 'listar_fil'%}" class="btn text-orangee btn-block" role="button">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                      <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                      <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                  </svg> Listar Filomenas
+              </a>
+          </div>
+      </div>
+  </div>
+ <!-- No seu template Django -->
+
+  
+</body>
+  
+{% endblock %}
+
+    

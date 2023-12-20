@@ -64,28 +64,29 @@
         text-align: center;
     }
 </style>
-<br><br>
+<br>
 <div class="container mt-5">
   <div class="container">
-    <h1 class="a">{% trans "Cadastre-se" %}</h1>
 
     <div class="row align-items-center">
-      <div class="col-md-6">
+      <div class="col-md-6 mx-auto">
         <hr>
+        <h1 class="a">{% trans "Cadastre-se" %}</h1>
+
         <p class="text-center">{% blocktrans %}Já tem acesso? faça <a href="{{ login_url }}">login</a>{% endblocktrans %}</p>
 
         <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
           {% csrf_token %}
 
           <div class="form-group">
-            <label for="id_login" class="form-label">{% translate "Nome de Usuário:" %}</label>
+            <label for="id_login" class="form-label">{% translate "Usuário:" %}</label>
             <div class="input-group">
               <div class="input-group-prepend">
                 <div class="input-icon input-group-text">
                   <i class="fas fa-user" aria-hidden="true"></i>
                 </div>
               </div>
-              <input type="text" name="{{ form.username.name }}" id="{{ form.username.id_for_label }}" class="form-control" required placeholder="{% translate 'Digite seu nome de usuário.' %}">
+              <input type="text" name="{{ form.username.name }}" id="{{ form.username.id_for_label }}" class="form-control" required placeholder="{% translate 'Digite seu nome de usuário' %}">
             </div>
             {% for error in form.username.errors %}
                 <div class="text-danger">{{ error }}</div>
@@ -115,7 +116,7 @@
                   <i class="fas fa-lock" aria-hidden="true"></i>
                 </div>
               </div>
-              <input type="password" name="{{ form.password1.name }}" id="{{ form.password1.id_for_label }}" class="form-control" required placeholder="{% translate 'Digite sua senha.' %}">
+              <input type="password" name="{{ form.password1.name }}" id="{{ form.password1.id_for_label }}" class="form-control" required placeholder="{% translate 'Digite sua senha' %}">
               <div class="input-group-append">
                 <button class="br-button btn btn-outline-secondary" type="button" aria-label="Mostrar senha" onclick="togglePassword('id_password1')">
                   <i class="fas fa-eye" aria-hidden="true"></i>
@@ -166,10 +167,7 @@
         </script>
       </div>
 
-      <div class="col-md-6">
-        <img src="{% static 'img/loginn.png' %}" alt="Imagem de cadastro" class="img-fluid mb-4">
-        <br>
-      </div>
+    
     </div>
   </div>
 </div>

@@ -56,6 +56,11 @@ class DetalharEstadialoga(generic.DetailView):
     model = Estadia
     template_name = 'filomenas/detalhar_logado.html'
     
+class dashboreestadia(LoginRequiredMixin, generic.ListView):
+    model = Estadia
+    template_name = 'filomenas/dashbore.html'
+    context_object_name = 'estadias'
+    paginate_by = 3    
     
 # CRUD DE HOSPEDE
 
@@ -63,7 +68,7 @@ class Criarfilomena(views.SuccessMessageMixin, generic.CreateView):
     model = Filomenas
     form_class = FilomenasForm
     template_name = 'filomenas/form_filomena.html'
-    success_url = reverse_lazy("home_logado")
+    success_url = reverse_lazy("listar_fil")
     success_message = "filomena cadastrada com sucesso!"
     
 class Listarfilom( generic.ListView):

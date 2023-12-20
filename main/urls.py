@@ -12,6 +12,7 @@ urlpatterns = [
     path('listar', views.ListarEstadia.as_view(), name='listar'),
     path('listar/log', views.ListarEstadialoga.as_view(), name='listar_log'),
     path('listar/filo', views.Listarfilom.as_view(), name='listar_fil'),
+    path('dashbore', views.dashboreestadia.as_view(), name='dashbore'),
 
 
     path('criar/', views.CriarEstadia.as_view(), name="criar"),
