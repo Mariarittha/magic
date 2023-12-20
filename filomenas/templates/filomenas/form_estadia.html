@@ -1,0 +1,60 @@
+{% extends 'base_logada.html' %}
+{% load static %}
+
+{% block body %}
+<br><br><br>
+<img src="{% static 'img/estampa.png' %}" alt="FOTO-DO-TERREIRO" style="width: 100%; filter: blur(1px); height: 20px;" />
+<br><br>  
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6 mb-3">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="nome_estadia" class="form-label  text-h1"><strong>Nome da Estadia:</strong></label>
+                    {{ form.nome }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="duracao" class="form-label text-h1"><strong>Duração(em dias): </strong></label>
+                    {{ form.duracao }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="descricao_estadia" class="form-label  text-h1"><strong>Descrição da Estadia:</strong></label>
+                    {{ form.descricao }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="localizacao" class="form-label  text-h1"><strong>Localização:</strong></label>
+                    {{ form.localizacao }}                </div>
+
+                <div class="mb-3">
+                    <label for="valor" class="form-label  text-h1"><strong>Valor:</strong></label>
+                    {{ form.valor}} 
+                </div>
+
+                <div class="mb-3">
+                    <label for="programacao" class="form-label  text-h1"><strong>Programação:</strong></label>
+                    {{ form.programacao }}      
+                </div>
+
+                <div class="mb-3">
+                    <label for="imagem" class="form-label  text-h1"><strong>Imagem:</strong></label>
+                    {{ form.imagem }}
+                </div>
+
+                <div class="text-center m-4">
+                    <a href="{% url 'home' %}" class="btn btn-secondary">Voltar</a>
+                    <button type="submit" class="btn  w3-brown">Enviar</button>
+                </div>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+
+
+{% endblock body %}
+    

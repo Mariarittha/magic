@@ -1,0 +1,51 @@
+{% extends 'base_logada.html' %}
+{% load static %}
+
+{% block body %}
+<br><br><br>
+<img src="{% static 'img/estampa.png' %}" alt="FOTO-DO-TERREIRO" style="width: 100%; filter: blur(1px); height: 40px;" />
+<br><br>
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6 mb-3">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {{ form.media }}
+
+                <div class="mb-3">
+                    <label for="{{ form.nome.id_for_label }}" class="form-label text-h1"><strong>Nome:</strong></label>
+                    {{ form.nome }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="{{ form.email.id_for_label }}" class="form-label text-h1"><strong>Email:</strong></label>
+                    {{ form.email }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="{{ form.idade.id_for_label }}" class="form-label text-h1"><strong>Idade:</strong></label>
+                    {{ form.idade }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="{{ form.telefone.id_for_label }}" class="form-label text-h1"><strong>Telefone:</strong></label>
+                    {{ form.telefone }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="{{ form.imagem_filo.id_for_label }}" class="form-label text-h1"><strong>Imagem de Perfil:</strong></label>
+                    {{ form.imagem }}
+                </div>
+
+                <div class="text-center m-4">
+                    <a href="{% url 'home_logado' %}" class="btn btn-secondary">Voltar</a>
+                    <button type="submit" class="btn w3-brown">Enviar</button>
+                </div>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock body %} 

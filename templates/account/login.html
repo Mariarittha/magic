@@ -24,30 +24,28 @@
                 <div class="mb-3">
                     <label for="id_login">{% translate "Usuário:" %}</label>
                     <div class="input-group text-h1">
-                        <div class="input-icon">
-                            <i class="fas fa-user" aria-hidden="true"></i>
-                        </div>
                         {{ form.login }}
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="id_password">{% translate "Senha:" %}</label>
+                    
                     <div class="input-group">
                         {{ form.password }}
                     </div>
                 </div>
                 <!-- ... Seus outros campos ... -->
                 <style>
-                    .mar{
+                    .mar {
                         background-color: #9f4907;
                     }
-                    .mar:hover{
-                    background-color: #E28743;
+                    .mar:hover {
+                        background-color: #E28743;
                     }
-
                 </style>
                 <button type="submit" class="btn mar">{% translate "Entrar" %}</button>
             </form>
+            
             <div class="forgot-password">
                 <br>
                 <a class="button secondaryAction cor-link" href="{% url 'account_reset_password' %}"><strong>{% translate "Esqueceu a senha?" %}</strong></a>

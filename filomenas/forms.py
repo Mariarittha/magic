@@ -1,10 +1,10 @@
 from django import forms
-from .models import Produtos, hospede, filomenas, estadia
+from .models import Produtos, Hospede, Filomenas, Estadia
 
 class ProdutosForm(forms.ModelForm):
     class Meta:
         model = Produtos
-        fields = ['nome', 'preco', 'imagem', 'descricao_produto']
+        fields = ['nome', 'preco', 'imagem', 'descricao']
         widgets = {
             'nome': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nome do Produto'}),
             'preco': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Preço'}),
@@ -14,7 +14,7 @@ class ProdutosForm(forms.ModelForm):
 
 class HospedeForm(forms.ModelForm):
     class Meta:
-        model = hospede
+        model = Hospede
         fields = ['nome', 'profissao', 'email', 'idade', 'imagem', 'telefone']
         widgets = {
             'nome': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nome do Hóspede'}),
@@ -27,7 +27,7 @@ class HospedeForm(forms.ModelForm):
 
 class FilomenasForm(forms.ModelForm):
     class Meta:
-        model = filomenas
+        model = Filomenas
         fields = ['nome', 'idade', 'imagem', 'email', 'telefone']
         widgets = {
             'nome': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nome'}),
@@ -39,7 +39,7 @@ class FilomenasForm(forms.ModelForm):
 
 class EstadiaForm(forms.ModelForm):
     class Meta:
-        model = estadia
+        model = Estadia
         fields = ['imagem', 'duracao', 'nome', 'descricao', 'localizacao', 'valor', 'programacao']
         widgets = {
             'imagem': forms.ClearableFileInput(attrs={'class': 'form-control'}),

@@ -1,0 +1,156 @@
+{% extends 'base_logada.html' %}
+{% load static %}
+
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Detalhes da Estadia </title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Ninestars
+  * Updated: Sep 18 2023 with Bootstrap v5.3.2
+  * Template URL: https://bootstrapmade.com/ninestars-free-bootstrap-3-theme-for-creative/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs Section ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Detalhes da EStadia</h2>
+          <ol>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'listar' %}">Produto</a></li>
+            <li>Detalhes da Estadia</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- Breadcrumbs Section -->
+    <style>
+
+      .product-container {
+          background-color: #fff;
+          border: 1px solid #ddd;
+          border-radius: 10px;
+      }
+  
+      .product-image {
+          border-radius: 10px 0 0 10px;
+      }
+  
+      .product-info {
+          padding: 20px;
+      }
+      .text-orange{
+          color: #E28743;
+      }
+      .text-orangee{
+     background-color: #e26d13;
+      }
+      .text-orangee:hover{
+     background-color: #E28743;
+      }
+      .product-price {
+          font-size: 1.5rem;
+          color: #E28743; /* verde */
+      }
+  
+      .product-description {
+          margin-top: 20px;
+      }
+  
+      .btn-buy, .btn-back {
+          width: 100%;
+          margin-top: 20px;
+      }
+  </style> 
+    <!-- ======= Portfolio Details Section ======= -->
+    <section id="portfolio-details" class="portfolio-details">
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-8">
+            <div class="portfolio-details-slider swiper">
+              <div class="swiper-wrapper align-items-center">
+
+                <div class="swiper-slide">
+                  <img src="{{ estadia.imagem.url }}" alt="">
+                </div>
+
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="portfolio-info">
+              <h3>Estadia: {{ estadia.nome }}</h3>
+              <ul>
+                <li><strong>Valor:</strong> R$ {{ estadia.valor }}</li>
+                <li><strong>Duração:</strong> {{ estadia.duracao }} dias</li>
+                <li><strong>Localização:</strong> {{ estadia.localizacao }}</li>
+
+              </ul>
+            </div>
+           <br><br><br><br><br>
+            <div class="text-center mt-4">
+              <a href="#" class="btn text-orangee btn-buy">Reservar</a>
+              <a href="{% url 'listar_log'%}" class="btn btn-secondary btn-back">Voltar</a>
+          </div>
+          </div>
+
+        </div>
+        <div class="portfolio-description">
+          <h2>Descrição:</h2>
+          <hr>
+          <p>{{ estadia.descricao}} </p>
+          <h2>Programação:</h2>
+          <hr>
+          <p>{{ estadia.programacao}} </p>
+        </div>
+      </div>
+    </section><!-- End Portfolio Details Section -->
+
+  </main><!-- End #main -->
+
+  
+  
+{% endblock body %}
+  
