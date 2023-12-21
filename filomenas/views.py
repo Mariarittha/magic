@@ -21,6 +21,10 @@ class index_logado(generic.TemplateView):
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>....
 #                                                                        CRUDS
 
+class ListarPerfil( TemplateView):
+    template_name = 'filomenas/perfil.html'
+   
+
 # CRUD de Estadia
 class ListarEstadia( generic.ListView):
     model = Estadia

@@ -49,6 +49,9 @@
 
   <!-- Parallax -->
   <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
+  <link rel="stylesheet" href="caminho/para/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.18.0/font/bootstrap-icons.css">
+
 
 
 
@@ -63,51 +66,63 @@
 
 <body>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top d-flex align-items-center">
-    <div class="container d-flex align-items-center justify-content-between">
-  
-      <div class="logo">
-        <h1 class="text-light">
-          <a href="{% url 'home_logado' %}">
-            <img src="{% static 'img/logo.png' %}" alt="Logo" class="img-fluid"> <!-- Descomente esta linha -->
-            <span>Filomenas</span>
-          </a>
-        </h1>
-      </div>
-  
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="{% url 'home_logado'%}">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">Sobre nós</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'listar_log' %}">Pacotes</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'listar_fil' %}">Filomenas</a></li>
-          <li class="dropdown"><a href="#"><span>Formulários</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="{% url 'criar'%}">Estadia</a></li>
-              <li><a href="{% url 'criar_filo'%}">Filomena</a></li>
-              <li><a href="{% url 'dashbore' %}">Dashbore</a></li>
-            </ul>
-          </li>
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top d-flex align-items-center">
+  <div class="container d-flex align-items-center justify-content-between">
 
-          <li><a class="nav-link scrollto" href="#contact">Contato</a></li>
-          <li><a class="getstarted scrollto" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
-          </svg> {{ request.user.username }}</a> </li>
+    <div class="logo">
+      <h1 class="text-light">
+        <a href="{% url 'home_logado' %}">
+          <img src="{% static 'img/logo.png' %}" alt="Logo" class="img-fluid">
+          <span>Filomenas</span>
+        </a>
+      </h1>
+    </div>
 
-          <li>
-            <a class="getstarted scrollto" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
-                SAIR
-            </a>
+    <nav id="navbar" class="navbar">
+      <ul>
+        <!-- Adicione a li com o ícone de notificação -->
+
+        <li><a class="nav-link scrollto" href="{% url 'home_logado'%}">Home</a></li>
+        <li><a class="nav-link scrollto" href="#about">Sobre nós</a></li>
+        <li><a class="nav-link scrollto" href="{% url 'listar_log' %}">Pacotes</a></li>
+        <li><a class="nav-link scrollto" href="{% url 'listar_fil' %}">Filomenas</a></li>
+        <li class="dropdown">
+          <a href="#"><span>Formulários</span> <i class="bi bi-chevron-down"></i></a>
+          <ul>
+            <li><a href="{% url 'criar'%}">Estadia</a></li>
+            <li><a href="{% url 'criar_filo'%}">Filomena</a></li>
+            <li><a href="{% url 'dashbore' %}">Dashboard</a></li>
+          </ul>
         </li>
 
+        <li><a class="nav-link scrollto" href="#contact">Contato</a></li>
+        <li><a class="nav-link scrollto active" href="#"><i class="bi bi-bell bi-3x" style="font-size: 1rem;"></i></a></li>
 
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+        <li class="dropdown">
+          <a href="#"><span>
+              <img src="{% static 'img/fil.jpg'%}" alt="Imagem do Usuário" class="user-image">
+              {{ request.user.username|capfirst }}</span> <i class="bi bi-chevron-down"></i>
+          </a>
+          <ul>
+            <li><a href="{% url 'listar_perfil'%}">Perfil</a></li>
+            <li><a class="" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">Sair</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
 
-    </div>
-  </header><!-- End Header -->
+    <style>
+      .user-image {
+        width: 40px; /* ajuste conforme necessário */
+        height: 40px; /* ajuste conforme necessário */
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 5px; /* ajuste conforme necessário */
+      }
+    </style>
+  </div>
+</header> End Header -->
 
   <style>
                 
@@ -134,16 +149,14 @@
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
-                <img src="{% static 'img/logo.png' %}" alt="" class="rounded-circle" style="width: 80px; height: 70px;">
-                <h5 class="modal-title" id="exampleModalLabel"><strong>Filomenas</strong>
-                </h5>
-
-                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                    aria-label="Fechar"></button>
-            </div>
+          <div class="modal-header d-flex align-items-center">
+            <img src="{% static 'img/logo.png' %}" alt="" class="rounded-circle" style="width: 80px; height: 70px;">
+            <h5 class="modal-title mx-4"><strong>Filomenas</strong></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+        
             <div class="modal-body">
-                <p><strong>{{ request.user.username }}</strong>, você tem certeza de que deseja sair?</p>
+                <p><strong>{{ request.user.username|capfirst }}</strong>, você tem certeza de que deseja sair?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar
