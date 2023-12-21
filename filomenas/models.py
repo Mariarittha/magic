@@ -14,16 +14,21 @@ class Hospede(models.Model):
     imagem = models.ImageField(null=True)
     telefone = models.CharField(max_length=20, null=True)
     formulario_enviado = models.BooleanField(default=False)
+    sobre_mim = models.CharField(max_length=400, null=True)
+    frase = models.CharField(max_length=300, null=True)
 
 class Filomenas(models.Model):
-    nome = models.CharField(max_length=120)
+    filomena = models.CharField(max_length=120, null=True)
     idade = models.IntegerField()
     descricao = models.CharField(max_length=1000)
     imagem = models.ImageField(null=True)
     email = models.EmailField(null=True)
+    sobre_mim = models.CharField(max_length=400, null=True)
+    frase = models.CharField(max_length=300, null=True)
     telefone = models.CharField(max_length=20, null=True)
 
 class Estadia(models.Model):
+    filomena = models.ForeignKey(Filomenas, on_delete=models.CASCADE, null=True)
     imagem = models.ImageField(null=True)
     duracao = models.IntegerField()
     nome = models.CharField(max_length=200)

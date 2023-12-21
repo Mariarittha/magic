@@ -8,16 +8,16 @@ class ProdutosAdmin(admin.ModelAdmin):
 
 @admin.register(Hospede)
 class HospedeAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'profissao', 'email', 'idade', 'telefone', 'formulario_enviado')
+    list_display = ('nome', 'profissao', 'email', 'idade', 'telefone', 'formulario_enviado', 'sobre_mim','frase')
     search_fields = ('nome', 'email')
 
 @admin.register(Filomenas)
 class FilomenasAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'idade', 'descricao', 'email', 'telefone')
-    search_fields = ('nome', 'email')
+    list_display = ('filomena', 'idade', 'descricao', 'email', 'telefone',  'sobre_mim','frase')
+    search_fields = ('filomena', 'email')
 
 @admin.register(Estadia)
 class EstadiaAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'duracao', 'localizacao', 'valor', 'programacao')
+    list_display = ('nome','filomena', 'duracao', 'localizacao', 'valor', 'programacao')
     search_fields = ('nome', 'localizacao')
 

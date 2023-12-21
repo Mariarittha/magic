@@ -15,7 +15,7 @@ class ProdutosForm(forms.ModelForm):
 class HospedeForm(forms.ModelForm):
     class Meta:
         model = Hospede
-        fields = ['nome', 'profissao', 'email', 'idade', 'imagem', 'telefone']
+        fields = ['nome', 'profissao', 'email', 'idade', 'imagem', 'telefone','sobre_mim' ,'frase']
         widgets = {
             'nome': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nome do Hóspede'}),
             'profissao': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Profissão'}),
@@ -23,27 +23,33 @@ class HospedeForm(forms.ModelForm):
             'idade': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Idade'}),
             'imagem': forms.ClearableFileInput(attrs={'class': 'form-control'}),
             'telefone': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Telefone'}),
+            'sobre_mim': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Ex: Gosto muito de ler'}),
+            'frase': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Ex: Amou daquela vez como se fosse a última.. '}),
+
         }
 
 class FilomenasForm(forms.ModelForm):
     class Meta:
         model = Filomenas
-        fields = ['nome', 'idade', 'imagem', 'email', 'telefone', 'descricao']
+        fields = ['filomena', 'idade', 'imagem', 'email', 'telefone', 'descricao', 'sobre_mim','frase']
         widgets = {
-            'nome': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nome'}),
+            'filomena': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nome'}),
             'idade': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Idade'}),
             'imagem': forms.ClearableFileInput(attrs={'class': 'form-control'}),
             'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'}),
             'telefone': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Telefone'}),
             'descricao': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Descrição da Estadia'}),
+            'sobre_mim': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Ex: Gosto muito de ler'}),
+            'frase': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Ex: Amou daquela vez como se fosse a última.. '}),
 
         }
 
 class EstadiaForm(forms.ModelForm):
     class Meta:
         model = Estadia
-        fields = ['imagem', 'duracao', 'nome', 'descricao', 'localizacao', 'valor', 'programacao']
+        fields = ['filomena','imagem', 'duracao', 'nome', 'descricao', 'localizacao', 'valor', 'programacao']
         widgets = {
+            'filomena': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nome'}),
             'imagem': forms.ClearableFileInput(attrs={'class': 'form-control'}),
             'duracao': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Duração'}),
             'nome': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nome da Estadia'}),

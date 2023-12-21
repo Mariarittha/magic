@@ -21,10 +21,34 @@ class index_logado(generic.TemplateView):
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>....
 #                                                                        CRUDS
 
-class ListarPerfil( TemplateView):
-    template_name = 'filomenas/perfil.html'
-   
+# CRUD DE HOSPEDE
 
+class Criarhospede( views.SuccessMessageMixin, generic.CreateView):
+    model = Hospede
+    form_class = HospedeForm
+    template_name = 'filomenas/form_hospede.html'
+    success_url = reverse_lazy("listar_perfil")
+    success_message = "Perfil criado com sucesso!"
+
+class ListarPerfil(generic.ListView ):
+    model = Hospede
+    template_name = 'filomenas/perfil.html'
+    context_object_name = 'hospedes'
+    
+class Editarperfil( LoginRequiredMixin, views.SuccessMessageMixin, generic.UpdateView):
+    model = Hospede
+    form_class = HospedeForm
+    template_name = 'filomenas/form_hospede.html'
+    success_url = reverse_lazy("listar_perfil")
+    success_message = "Perfil atualizada com sucesso!"
+   
+# class ListarEstadia( generic.ListView):
+#     model = Estadia
+#     template_name = 'filomenas/listar_pacotes.html'
+#     context_object_name = 'estadias'
+#     paginate_by = 3
+
+#  ---------------------------------------------------------------------------------------------------------------   
 # CRUD de Estadia
 class ListarEstadia( generic.ListView):
     model = Estadia

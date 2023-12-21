@@ -15,11 +15,13 @@ urlpatterns = [
     path('listar/filo', views.Listarfilom.as_view(), name='listar_fil'),
     path('dashbore', views.dashboreestadia.as_view(), name='dashbore'),
 
-
+    path('criar_hospede/', views.Criarhospede.as_view(), name="criar_hosp"),
     path('criar/', views.CriarEstadia.as_view(), name="criar"),
     path('criar_filo/', views.Criarfilomena.as_view(), name="criar_filo"),
 
     path('atualizar_estadia/<int:pk>/', views.AtualizarEstadia.as_view(), name="atualizar_estadia"),
+    path('atualizar_perfil/<int:pk>/', views.Editarperfil.as_view(), name="editar_perfil"),
+
     path('detalhar/<int:pk>/', views.DetalharEstadia.as_view(), name="detalhar"),
     path('detalhar_log/<int:pk>/', views.DetalharEstadialoga.as_view(), name="detalhar_log"),
 
