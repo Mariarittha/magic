@@ -21,6 +21,9 @@ urlpatterns = [
 
     path('atualizar_estadia/<int:pk>/', views.AtualizarEstadia.as_view(), name="atualizar_estadia"),
     path('atualizar_perfil/<int:pk>/', views.Editarperfil.as_view(), name="editar_perfil"),
+    
+    path('apagar_estadia/<int:pk>/', views.ApagarEstadia.as_view(), name='apagar_estadia'),
+
 
     path('detalhar_perfil/<int:pk>/', views.Detalharperfil.as_view(), name="detalhar_perfil"),
     path('detalhar/<int:pk>/', views.DetalharEstadia.as_view(), name="detalhar"),

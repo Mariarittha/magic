@@ -80,6 +80,11 @@ class AtualizarEstadia( LoginRequiredMixin, views.SuccessMessageMixin, generic.U
     success_url = reverse_lazy("dashboard")
     success_message = "Estadia atualizada com sucesso!"
     
+class ApagarEstadia( LoginRequiredMixin, generic.DeleteView):
+    model = Estadia
+    success_url = reverse_lazy("dashboard")
+    success_message = "Estadia removida com sucesso!"
+    
 class DetalharEstadia(generic.DetailView):
     model = Estadia
     template_name = 'filomenas/detalhar.html'
