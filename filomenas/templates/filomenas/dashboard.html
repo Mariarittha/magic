@@ -38,10 +38,10 @@
     <div class="container" data-aos="fade-up">
 
       <div class="section-title">
-        <h2>Dashbore</h2>
-        <p>Área administrativa</p>
+        <h2>Dashboard</h2>
+        <p>Área administrativa - Estadia</p>
       </div>
-      <div class="container text-center">
+      <div class="container ">
         <div class="row row-cols-2 mt-3">
           {% for estadia in estadias %}
             <div class="col-md-4">
@@ -49,14 +49,36 @@
                 <div class="card" style="width: 18rem;">
                   <img src="{{ estadia.imagem.url }}" alt="Imagem da Estadia" >
                   <div class="card-body">
-                    <h5 class="card-title text-orangee">Nome da Estadia: <strong>{{ estadia.nome_estadia }}</strong></h5>
-                    <p class="card-text">Descrição: {{ estadia.descricao_estadia }}</p>
-                    <p class="card-text">Duração: {{estadia.duracao}}</p>
-                    <p class="card-text">Localização: {{estadia.localizacao}}</p>
-                    <p class="card-text">Valor: {{estadia.valor}}</p>
-                    <p class="card-text">Programação: {{estadia.programacao}}</p>
+                    <h5 class="card-title text-orangee"><strong>Nome da Estadia:</strong> <strong>{{ estadia.nome }}</strong></h5>
+                    <p class="card-text"><strong>Filomena:</strong> {{estadia.filomena}}</p>
+                    <p class="card-text"><strong>Duração:</strong> {{estadia.duracao}}</p>
+                    <p class="card-text"><strong>Localização:</strong> {{estadia.localizacao}}</p>
+                    <p class="card-text"><strong>Valor:</strong> {{estadia.valor}}</p>
+                    <p class="card-text"><strong>Descrição:</strong> {{ estadia.descricao }}</p>
+                    <p class="card-text"><strong>Programação: </strong>{{estadia.programacao}}</p>
     
                   </div>
+<hr>
+                 <div class="text-center">
+                    <a class="btn btn-orange" href="# " title="Editar" data-toggle="modal" data-target="#myModal">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                        </svg>
+                    </a>
+                 
+
+                <button class="btn btn-" style="font-size: 1rem;" type="button" aria-label="excluir" title="excluir"
+                    data-bs-toggle="modal" data-bs-target="#deleteModal" data-estadia-pk="{{ estadia.pk }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5" />
+                    </svg>
+                </button>
+                 </div>
+                 <br>
+
                 </div>
               </div>
             </div>
@@ -69,9 +91,6 @@
       </div>
     </div>
   </section><!-- End Portfolio Section -->
-
-   
-  
    
   
   <style>
@@ -214,64 +233,7 @@
     </div>
 </div>
 <br><br>
-  
-<img src="{% static 'img/estampa.png' %}" alt="FOTO-DO-TERREIRO" style="width: 100%; filter: blur(1px); height: 20px;" />
-<div class="container mt-4">
-    <h2 class="text-center text-orangee">PAINEL</h2>
-    <div class="table-responsive mt-4">
-        <table class="table table-striped table-bordered table-hover">
-            <thead class="text-orange">
-                <tr>
-                    <th scope="col">Imagem</th>
-                    <th scope="col">Nome da Estadia</th>
-                    <th scope="col">Duração</th>
-                    <th scope="col">Localização</th>
-                    <th scope="col">Valor</th>
-                    <th scope="col">Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for estadia in estadias %}
-                    <tr>
-                        <td>
-                            {% if estadia.imagem %}
-                                <img src="{{ estadia.imagem.url }}" alt="Imagem da Estadia" width="150px" height="100px" class="img-thumbnail">
-                            {% else %}
-                                Sem imagem
-                            {% endif %}
-                        </td>
-                        <td>{{ estadia.nome_estadia }}</td>
-                        <td>{{ estadia.duracao }}</td>
-                        <td>{{ estadia.localizacao }}</td>
-                        <td>{{ estadia.valor }}</td>
-                        <td>
-                            <a class="btn btn-warning" href="#" title="Editar">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-                                </svg>
-                            </a>
-                            <button class="btn btn-danger" type="button" aria-label="excluir" title="excluir"
-                                data-bs-toggle="modal" data-bs-target="#deleteModal" data-estadia-pk="{{ estadia.pk }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3"
-                                    viewBox="0 0 16 16">
-                                    <path
-                                        d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5" />
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                {% empty %}
-                    <tr>
-                        <td colspan="6" class="text-center">
-                            <p>Não existem estadias cadastradas.</p>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-</div>
+
 
 <!-- Modal de Exclusão -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">

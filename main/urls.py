@@ -13,7 +13,7 @@ urlpatterns = [
     path('listar/log', views.ListarEstadialoga.as_view(), name='listar_log'),
     path('perfil/listar', views.ListarPerfil.as_view(), name='listar_perfil'),
     path('listar/filo', views.Listarfilom.as_view(), name='listar_fil'),
-    path('dashbore', views.dashboreestadia.as_view(), name='dashbore'),
+    path('dashboard/', views.dashboardestadia.as_view(), name='dashboard'),
 
     path('criar_hospede/', views.Criarhospede.as_view(), name="criar_hosp"),
     path('criar/', views.CriarEstadia.as_view(), name="criar"),
@@ -22,6 +22,7 @@ urlpatterns = [
     path('atualizar_estadia/<int:pk>/', views.AtualizarEstadia.as_view(), name="atualizar_estadia"),
     path('atualizar_perfil/<int:pk>/', views.Editarperfil.as_view(), name="editar_perfil"),
 
+    path('detalhar_perfil/<int:pk>/', views.Detalharperfil.as_view(), name="detalhar_perfil"),
     path('detalhar/<int:pk>/', views.DetalharEstadia.as_view(), name="detalhar"),
     path('detalhar_log/<int:pk>/', views.DetalharEstadialoga.as_view(), name="detalhar_log"),
 

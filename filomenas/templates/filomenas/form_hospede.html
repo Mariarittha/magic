@@ -24,83 +24,80 @@
     <div class="row">
         <div class="col"></div>
         <div class="col-8">
+            <style>
+                .row{
+                    color: #cf6717;
+                }
+            </style>
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form.media }}
 
                 <div class="row">
-                    <div class="col-md-5 pr-1">
+                    <div class="col-md-12">
                         <div class="form-group">
-                            <label for="{{ form.nome.id_for_label }}" >Nome: </label>
+                            <label for="{{ form.nome.id_for_label }}" ><strong>Nome completo:</strong> </label>
                             {{ form.nome }}                        </div>
                     </div>
-                    <div class="col-md-3 px-1">
-                        <div class="form-group">
-                            <label for="{{ form.nome.id_for_label }}">Username</label>
-                            <input type="text" class="form-control" placeholder="ex: Maria" name="username">
-                        </div>
-                    </div>
-                    <div class="col-md-4 pl-1">
-                        <div class="form-group">
-                            <label for="{{ form.nome.id_for_label }}">Email</label>
-                            <input type="email" class="form-control" placeholder="filomenas2019@gmail.com" name="email">
-                        </div>
-                    </div>
+                    
+                   
                 </div>
                 <div class="row">
                     <div class="col-md-6 pr-1">
                         <div class="form-group">
-                            <label for="{{ form.nome.id_for_label }}">Primeiro nome</label>
-                            <input type="text" class="form-control" placeholder="ex: Maria" name="primeiro_nome">
-                        </div>
+                            <label for="{{ form.nome.id_for_label }}"><strong>Email: </strong></label>
+                            {{ form.email }}                        </div>
                     </div>
                     <div class="col-md-6 pl-1">
                         <div class="form-group">
-                            <label for="{{ form.nome.id_for_label }}">Último nome</label>
-                            <input type="text" class="form-control" placeholder="ex: Silva" name="ultimo_nome">
-                        </div>
+                            <label for="{{ form.nome.id_for_label }}"><strong>Imagem:</strong> </label>
+                            {{ form.imagem }}                        </div>
                     </div>
                 </div>
+                
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-5 pr-1">
                         <div class="form-group">
-                            <label for="{{ form.nome.id_for_label }}">Endereço</label>
-                            <input type="text" class="form-control" placeholder="ex: rua epifanio" name="endereco">
+                            <label for="{{ form.profissao.id_for_label }}"><strong>Profissão:</strong></label>
+                            {{ form.profissao }}
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 pr-1">
+                
+                    <div class="col-md-2 px-1">
                         <div class="form-group">
-                            <label for="{{ form.nome.id_for_label }}">Cidade</label>
-                            <input type="text" class="form-control" placeholder="ex: Portalgre" name="cidade">
+                            <label for="{{ form.idade.id_for_label }}"><strong>Idade:</strong></label>
+                            {{ form.idade }}
                         </div>
                     </div>
-                    <div class="col-md-4 px-1">
+                
+                    <div class="col-md-5 pl-1">
                         <div class="form-group">
-                            <label for="{{ form.nome.id_for_label }}">País</label>
-                            <input type="text" class="form-control" placeholder="ex: Brasil" name="pais">
-                        </div>
-                    </div>
-                    <div class="col-md-4 pl-1">
-                        <div class="form-group">
-                            <label for="{{ form.nome.id_for_label }}">Telefone</label>
+                            <label for="{{ form.telefone.id_for_label }}"><strong>Telefone:</strong></label>
                             {{ form.telefone }}
                         </div>
                     </div>
                 </div>
+                
+                
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="{{ form.nome.id_for_label }}">Sobre mim</label>
-                            <textarea class="form-control textarea" name="sobre_mim"></textarea>
-                        </div>
+                            <label for="{{ form.nome.id_for_label }}"><strong>Sobre mim:</strong></label>
+                            {{ form.sobre_mim }}                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="{{ form.nome.id_for_label }}"><strong>Frase:</strong> </label>
+                            {{ form.frase }}                      </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="update ml-auto mr-auto text-center">
                         <a href="{% url 'home' %}" class="btn btn-secondary">Voltar</a>
-                        <button type="submit" class="btn custom-orange-btn btn-round">Editar</button>
+                        <button type="submit" class="btn custom-orange-btn btn-round">Enviar</button>
+                    <br><br><br><br>
                     </div>
                 </div>
             </form>

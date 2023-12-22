@@ -3,29 +3,11 @@
 
 
 {% block body %}
-   
 
-<!--
-=========================================================
-* Paper Dashboard 2 - v2.0.1
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/paper-dashboard-2
-* Copyright 2020 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
 <html lang="en">
 
 <style>
-    /* ... (seu estilo existente) ... */
-
-    /* Adicionando detalhes em laranja */
     .card-user ,
     .card-user .btn-outline-success,
     .card-user .team-members li .text-muted,
@@ -75,25 +57,25 @@ Coded by www.creative-tim.com
         <div class="row">
           <div class="col-md-4">
             <div class="card card-user">
-              <div class="image">
-                <img src="../assets/img/damir-bosnjak.jpg" alt="...">
-              </div>
+              
               <div class="card-body">
                 <div class="author">
-                  <a href="#">
-                    <img class="avatar border-gray" src="../assets/img/mike.jpg" alt="...">
-                    <h5 class="title">NOME</h5>
-                  </a>
-                  <p class="description">
-                    @{{ request.user.username|capfirst }}
-                  </p>
+                    <a href="#" class="d-flex flex-column align-items-center">
+                        <img class="avatar border-gray user-image mx-auto" src="{% static 'img/fil.jpg' %}" alt="Imagem de Perfil" style="width: 300px; height: 300px; border-radius: 50%; overflow: hidden; margin-right: 5px;">
+                        <br>
+                        <hr>
+                        <h5 class="title text-center"> @{{ request.user.username|capfirst }}</h5>
+                    </a>
+                    <p class="description">
+                  <hr> 
+                 </p>
                 </div>
                 <p class="description a text-center">
-                  "I like the way you work it <br>
-                  No diggity <br>
-                  I wanna bag it up"
+                    "I like the way you work it <br>
+                    No diggity <br>
+                    I wanna bag it up"
                 </p>
-              </div>
+            </div>
               <div class="card-footer">
                 <hr>
                 <!-- <div class="button-container">
@@ -189,6 +171,7 @@ Coded by www.creative-tim.com
                     <div class="col-md-3 px-1">
                       <div class="form-group">
                         <label>Username</label>
+                        
                         <input type="text" class="form-control" placeholder="ex: Maria" >
                       </div>
                     </div>

@@ -1,63 +1,90 @@
 {% extends 'base_logada.html' %}
 {% load static %}
 
+
 {% block body %}
 <br><br><br>
-<br>  
+<br> 
 <style>
-    .text-h1{
-        color: #E28743;
-    }
+   .text-h1{
+       color: #E28743;
+   }
+</style>
+<style>
+   .text-h1 {
+       color: #E28743;
+   }
+
+
+   .custom-orange-btn {
+       background-color: #cf6717; /* Código de cor laranja - ajuste conforme necessário */
+       color: #fff; /* Cor do texto */
+       /* Outros estilos, se necessário */
+   }
+
+
+   .custom-orange-btn:hover {
+       background-color: #E28743;
+       color: #fff;
+   }
 </style>
 <div class="container">
-    <div class="row">
-        <div class="col"></div>
-        <div class="col-8 mb-3">
-            <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="row">
-                    <div class="col-md-6 mb-2">
-                        <label for="nome_estadia" class="form-label text-h1"><strong>Nome da Estadia:</strong></label>
-                        {{ form.nome }}
-                    </div>
+   <div class="row">
+       <div class="col"></div>
+       <div class="col-8 mb-3">
+           <form method="post" enctype="multipart/form-data">
+               {% csrf_token %}
+               {{ form.media }}
 
-                    <div class="col-md-6 mb-2">
-                        <label for="duracao" class="form-label text-h1"><strong>Duração (em dias):</strong></label>
-                        {{ form.duracao }}
-                    </div>
+               <div class="row">
+                   <div class="col-md-6 mb-2 pr-1">
+                       <label for="nome" for="{{ form.nome.id_for_label }}" class="form-label text-h1"><strong>Nome da Estadia:</strong></label>
+                       {{ form.nome }}
+                   </div>
 
-                    <div class="col-md-6 mb-2">
-                        <label for="localizacao" class="form-label text-h1"><strong>Localização:</strong></label>
-                        {{ form.localizacao }}
-                    </div>
-
-                    <div class="col-md-6 mb-2">
-                        <label for="valor" class="form-label text-h1"><strong>Valor:</strong></label>
-                        {{ form.valor }}
-                    </div>
-                    <div class="col-md-6 mb-2">
-                        <label for="descricao_estadia" class="form-label text-h1"><strong>Descrição da Estadia:</strong></label>
-                        {{ form.descricao }}
-                    </div>
-                    <div class="col-md-6 mb-2">
-                        <label for="programacao" class="form-label text-h1"><strong>Programação:</strong></label>
-                        {{ form.programacao }}
-                    </div>
-
-                    
-                    <div class="col-md-6 mb-2">
-                        <label for="imagem" class="form-label text-h1"><strong>Imagem:</strong></label>
-                        {{ form.imagem }}
-                    </div>
+                   <div class="col-md-6 mb-2 pl-2">
+                    <label for="filomena" for="{{ form.filomena.id_for_label }}" class="form-label text-h1"><strong>Filomena:</strong></label>
+                    {{ form.filomena }}
                 </div>
 
-                <div class="text-center mt-2">
-                    <a href="{% url 'home' %}" class="btn btn-secondary">Voltar</a>
-                    <button type="submit" class="btn w3-brown">Enviar</button>
-                </div>
-            </form>
-        </div>
-        <div class="col"></div>
-    </div>
+                   <div class="col-md-6 mb-2 pr-1">
+                       <label for="localizacao" for="{{ form.localicao.id_for_label }}" class="form-label text-h1"><strong>Localização:</strong></label>
+                       {{ form.localizacao }}
+                   </div>
+
+
+                   <div class="col-md-6 mb-2 pl-1">
+                       <label for="duracao" for="{{ form.duracao.id_for_label }}" class="form-label text-h1"><strong>Duração (em dias):</strong></label>
+                       {{ form.duracao }}
+                   </div>
+
+
+                   <div class="col-md-6 mb-2 pr-1">
+                       <label for="valor" for="{{ form.valor.id_for_label }}" class="form-label text-h1"><strong>Valor:</strong></label>
+                       {{ form.valor }}
+                   </div>
+
+
+                   <div class="col-md-6 mb-2 pl-1">
+                       <label for="imagem" for="{{ form.imagem.id_for_label }}" class="form-label text-h1"><strong>Imagem:</strong></label>
+                       {{ form.imagem }}
+                   </div>
+                   <div class="col-md-12">
+                       <label for="descricao" for="{{ form.descricao.id_for_label }}" class="form-label text-h1"><strong>Descrição da Estadia:</strong></label>
+                       {{ form.descricao }}
+                   </div>
+                   <div class="col-md-12">
+                       <label for="programacao" for="{{ form.programacao.id_for_label }}" class="form-label text-h1"><strong>Programação:</strong></label>
+                       {{ form.programacao }}
+                   </div>
+               </div>
+               <div class="text-center mt-2">
+                   <a href="{% url 'home_logado' %}" class="btn btn-secondary">Voltar</a>
+                   <button type="submit" class="btn custom-orange-btn btn-round">Enviar</button>
+               </div>
+           </form>
+       </div>
+       <div class="col"></div>
+   </div>
 </div>
 {% endblock %}

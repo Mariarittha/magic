@@ -9,7 +9,7 @@ class ProdutosForm(forms.ModelForm):
             'nome': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nome do Produto'}),
             'preco': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Preço'}),
             'imagem': forms.ClearableFileInput(attrs={'class': 'form-control'}),
-            'descricao': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Descrição do Produto'}),
+            'descricao': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Descrição do Produto', 'rows': 3}),
         }
 
 class HospedeForm(forms.ModelForm):
@@ -23,8 +23,8 @@ class HospedeForm(forms.ModelForm):
             'idade': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Idade'}),
             'imagem': forms.ClearableFileInput(attrs={'class': 'form-control'}),
             'telefone': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Telefone'}),
-            'sobre_mim': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Ex: Gosto muito de ler'}),
-            'frase': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Ex: Amou daquela vez como se fosse a última.. '}),
+            'sobre_mim': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Ex: Gosto muito de ler', 'rows': 3}),
+            'frase': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Ex: Amou daquela vez como se fosse a última.. ', 'rows': 3}),
 
         }
 
@@ -38,9 +38,9 @@ class FilomenasForm(forms.ModelForm):
             'imagem': forms.ClearableFileInput(attrs={'class': 'form-control'}),
             'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'}),
             'telefone': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Telefone'}),
-            'descricao': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Descrição da Estadia'}),
-            'sobre_mim': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Ex: Gosto muito de ler'}),
-            'frase': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Ex: Amou daquela vez como se fosse a última.. '}),
+            'descricao': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Descrição da Estadia', 'rows': 3}),
+            'sobre_mim': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Ex: Gosto muito de ler', 'rows': 3}),
+            'frase': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Ex: Amou daquela vez como se fosse a última.. ', 'rows': 3}),
 
         }
 
@@ -49,12 +49,12 @@ class EstadiaForm(forms.ModelForm):
         model = Estadia
         fields = ['filomena','imagem', 'duracao', 'nome', 'descricao', 'localizacao', 'valor', 'programacao']
         widgets = {
-            'filomena': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nome'}),
+            'filomena': forms.Select(attrs={'class': 'form-control'}),
             'imagem': forms.ClearableFileInput(attrs={'class': 'form-control'}),
             'duracao': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Duração'}),
             'nome': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nome da Estadia'}),
-            'descricao': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Descrição da Estadia'}),
+            'descricao': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Descrição da Estadia', 'rows': 3}),
             'localizacao': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Localização'}),
             'valor': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Valor'}),
-            'programacao': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Programação'}),
+            'programacao': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Programação', 'rows': 3}),
         }

@@ -25,8 +25,13 @@ class Filomenas(models.Model):
     email = models.EmailField(null=True)
     sobre_mim = models.CharField(max_length=400, null=True)
     frase = models.CharField(max_length=300, null=True)
-    telefone = models.CharField(max_length=20, null=True)
-
+    telefone = models.CharField(max_length=20, null=True) 
+    def __str__(self):
+        if self.filomena:
+            return self.filomena
+        else:
+            return f"Filomena-{self.filomena}"
+    
 class Estadia(models.Model):
     filomena = models.ForeignKey(Filomenas, on_delete=models.CASCADE, null=True)
     imagem = models.ImageField(null=True)
@@ -36,3 +41,5 @@ class Estadia(models.Model):
     localizacao = models.CharField(max_length=500)
     valor = models.DecimalField(verbose_name=("valor"), decimal_places=2, max_digits=6)    
     programacao = models.CharField(max_length=1000, null=True)
+
+    

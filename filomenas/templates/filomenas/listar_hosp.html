@@ -1,8 +1,6 @@
 {% extends 'base_logada.html' %}
 {% load static %}
 
-
-  
 {% block body %}
 <br><br><br>
     <!-- ======= Portfolio Section ======= -->
@@ -11,21 +9,21 @@
 
         <div class="section-title">
           <h2>Estadias</h2>
-          <p>Não deixe de reservar sua estadia!</p>
+          <p>Check out our beautifull portfolio</p>
         </div>
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-          {% for estadia in estadias %}
+          {% for hospede in hospedes %}
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
-              <img src="{{ estadia.imagem.url }}" class="img-fluid" alt="">
+              <img src="{{ hospede.imagem.url }}" class="img-fluid" alt="">
               <div class="portfolio-links">
                 <a href="{% static 'img/logo.png' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="ver imagem"><i class="bi bi-plus"></i></a>
-                <a href="{% url 'detalhar_log' estadia.pk%}" title="mais detalhes"><i class="bi bi-link"></i></a>
+                <a href="#" title="mais detalhes"><i class="bi bi-link"></i></a>
               </div>
               <div class="portfolio-info">
-                <h4><strong>{{ estadia.nome }}</strong></h4>
-                <p>{{ estadia.valor }}</p>
+                <h4><strong>{{ hospede.nome }}</strong></h4>
+                <p>{{ hospede.sobre_mim }}</p>
               </div>
             </div>
           </div>

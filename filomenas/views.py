@@ -35,6 +35,10 @@ class ListarPerfil(generic.ListView ):
     template_name = 'filomenas/perfil.html'
     context_object_name = 'hospedes'
     
+class Detalharperfil(generic.DetailView):
+    model = Hospede
+    template_name = 'filomenas/perfil.html'
+    
 class Editarperfil( LoginRequiredMixin, views.SuccessMessageMixin, generic.UpdateView):
     model = Hospede
     form_class = HospedeForm
@@ -66,14 +70,14 @@ class CriarEstadia( views.SuccessMessageMixin, generic.CreateView):
     model = Estadia
     form_class = EstadiaForm
     template_name = 'filomenas/form_estadia.html'
-    success_url = reverse_lazy("listar")
+    success_url = reverse_lazy("listar_log")
     success_message = "Estadia cadastrada com sucesso!"
 
 class AtualizarEstadia( LoginRequiredMixin, views.SuccessMessageMixin, generic.UpdateView):
     model = Estadia
     form_class = EstadiaForm
     template_name = "filomenas/form_estadia.html"
-    success_url = reverse_lazy("listar")
+    success_url = reverse_lazy("dashboard")
     success_message = "Estadia atualizada com sucesso!"
     
 class DetalharEstadia(generic.DetailView):
@@ -84,9 +88,9 @@ class DetalharEstadialoga(generic.DetailView):
     model = Estadia
     template_name = 'filomenas/detalhar_logado.html'
     
-class dashboreestadia(LoginRequiredMixin, generic.ListView):
+class dashboardestadia(LoginRequiredMixin, generic.ListView):
     model = Estadia
-    template_name = 'filomenas/dashbore.html'
+    template_name = 'filomenas/dashboard.html'
     context_object_name = 'estadias'
     paginate_by = 3    
     
@@ -100,7 +104,7 @@ class Criarfilomena(views.SuccessMessageMixin, generic.CreateView):
     success_message = "filomena cadastrada com sucesso!"
     
 class Listarfilom( generic.ListView):
-    model = Estadia
+    model = Filomenas
     template_name = 'filomenas/listar_filomenas.html'
     context_object_name = 'filomenas'
     paginate_by = 3
