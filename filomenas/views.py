@@ -14,8 +14,6 @@ class index(generic.TemplateView):
     
 class index_logado(generic.TemplateView):
     template_name = "filomenas/index_logado.html"
- 
-# logado
 
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>....
