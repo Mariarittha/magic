@@ -4,6 +4,11 @@
 
   
 {% block body %}
+
+
+
+
+
 <br><br><br>
     <!-- ======= Portfolio Section ======= -->
     <section id="portfolio" class="portfolio">
@@ -18,7 +23,18 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
-              <img src="{{ estadia.imagem.url }}" class="img-fluid" alt="">
+              <img src="{{ estadia.imagem.url }}" class="img-fluid img-fixed-size" alt="">
+              <style>
+                .img-fixed-size {
+                    width: 100%; /* Defina o tamanho desejado em pixels ou porcentagem */
+                    height: auto; /* Mantém a proporção original da imagem */
+                    max-width: 300px; /* Limita a largura máxima da imagem, ajuste conforme necessário */
+                    max-height: 200px; /* Limita a altura máxima da imagem, ajuste conforme necessário */
+                    display: block; /* Evita espaçamento extra na parte inferior da imagem */
+                    margin: 0 auto; /* Centraliza a imagem no contêiner pai */
+                }
+            </style>
+            
               <div class="portfolio-links">
                 <a href="{% static 'img/logo.png' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="ver imagem"><i class="bi bi-plus"></i></a>
                 <a href="{% url 'detalhar_log' estadia.pk%}" title="mais detalhes"><i class="bi bi-link"></i></a>

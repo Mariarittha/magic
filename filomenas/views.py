@@ -7,7 +7,42 @@ from django.contrib.messages import views
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import EstadiaForm, ProdutosForm, HospedeForm, FilomenasForm
 from .models import Estadia, Produtos, Filomenas, Hospede
+from django.shortcuts import get_object_or_404, redirect, render
+from django.contrib.auth.decorators import login_required
+from .models import Notification
+from django.shortcuts import render
+from django.contrib import messages
 
+from django.contrib.messages import get_messages
+# views.py - notifications
+from django.contrib import messages
+from django.http import JsonResponse
+
+@login_required
+def get_notification_count(request):
+    notifications = Notification.objects.filter(user=request.user, is_read=False)
+    unread_count = notifications.count()
+    return JsonResponse({'unread_count': unread_count})
+@login_required
+def notifications(request):
+    notifications = Notification.objects.filter(user=request.user, is_read=False)
+    unread_count = notifications.count()
+
+    # Marcar as notificações como lidas
+    for notification in notifications:
+        notification.mark_as_read()
+
+    # Usar SessionStorage para obter mensagens
+    storage = messages.get_messages(request)
+
+    reservation_notification = [msg for msg in storage if 'reservation' in msg.tags]
+
+    if reservation_notification:
+        # Criar uma nova instância de Notification para a reserva
+        Notification.objects.create(user=request.user, message=reservation_notification[0].message, is_read=False)
+        unread_count += 1
+
+    return render(request, 'filomenas/notifications.html', {'notifications': notifications, 'unread_count': unread_count})
 
 class index(generic.TemplateView):
     template_name = "filomenas/index.html"
@@ -91,6 +126,18 @@ class DetalharEstadialoga(generic.DetailView):
     model = Estadia
     template_name = 'filomenas/detalhar_logado.html'
     
+def reservar_estadia(request, estadia_id):
+    estadia = Estadia.objects.get(pk=estadia_id)
+
+    # Lógica para reservar a estadia...
+
+    # Adicione a mensagem de sucesso
+
+    # Crie a instância de Notification
+    Notification.objects.create(user=request.user, message=f"Sua aquisição de estadia foi notificada. Aguarde a validação de {estadia.filomena}!", is_read=False)
+
+    return render(request, 'filomenas/detalhar_logado.html', {'estadia': estadia})
+    
 class dashboardestadia(LoginRequiredMixin, generic.ListView):
     model = Estadia
     template_name = 'filomenas/dashboard.html'
@@ -111,3 +158,21 @@ class Listarfilom( generic.ListView):
     template_name = 'filomenas/listar_filomenas.html'
     context_object_name = 'filomenas'
     paginate_by = 3
+    
+class Listarfilom_nao( generic.ListView):
+    model = Filomenas
+    template_name = 'filomenas/listar_filomena_nao.html'
+    context_object_name = 'filomenas'
+    paginate_by = 3
+    
+class contato_log(generic.TemplateView):
+    template_name = "filomenas/contato_log.html"
+    
+class contato(generic.TemplateView):
+    template_name = "filomenas/contato.html"
+    
+class nos_log(generic.TemplateView):
+    template_name = "filomenas/sobrenos_log.html"
+    
+class nos(generic.TemplateView):
+    template_name = "filomenas/sobrenos.html"

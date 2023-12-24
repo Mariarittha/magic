@@ -1,25 +1,67 @@
 {% extends 'base_logada.html' %}
 {% load static %}
-{% block title %}Forbidden (403){% endblock %}
+
 
 {% block body %}
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-6">
-            <div class="card" style="background-color: #D2B48C;"> <!-- Defina a cor marrom claro que deseja -->
-                <div class="card-body">
-                    <h1 class="text-center">Forbidden (403)</h1>
-                    <p class="text-center">{% if exception %}{{ exception }}{% else %}Você não tem permissão para acessar esta página.{% endif %}</p>
-                    <div class="row justify-content-center mt-4">
-                        <div class="col-lg-6 col-md-8 col-sm-10 col-12 text-center"> <!-- Centralize o botão e o texto -->
-                            <a class="btn btn-secondary" href="{% url 'filomenas:home2' %}" role="button">
-                                <i class="fas fa-chevron-left mr-2" aria-hidden="true"></i>Voltar
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!DOCTYPE html>
+<html lang="pt_BR">
+
+<head>
+    <meta charset="utf-8">
+    <title>Rota Não encontrada!</title>
+    <style type="text/css">
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body,
+        #main {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f7f7f7;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        #main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        #main-title {
+            font-size: 200px;
+            font-weight: 100;
+            opacity: .15;
+        }
+
+        #main-subtitle {
+            padding-bottom: 10px;
+            opacity: 0.60;
+            font-weight: 100;
+        }
+    </style>
+</head>
+
+<body>
+<main role="main" id="main">
+    <div>
+        <h1 id="main-title">403</h1>
+        <h3 id="main-subtitle">Poxa! Essa rota não foi encontrada!</h3>
+        <i style="opacity:0.80;color:#cc0033">
+            <?php echo "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>
+        </i>
     </div>
-</div>
-{% endblock %}
+</main>
+</body>
+
+</html>
+{% endblock body %}
+  

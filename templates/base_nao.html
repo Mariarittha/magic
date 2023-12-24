@@ -88,11 +88,11 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="{% url 'home'%}">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">Sobre nós</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'sobrenos' %}">Sobre nós</a></li>
           <li><a class="nav-link scrollto" href="{% url 'listar' %}">Pacotes</a></li>
-          <li><a class="nav-link scrollto" href="#">Filomenas</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'listar_fil_nao' %}">Filomenas</a></li>
           
-          <li><a class="nav-link scrollto" href="#contact">Contato</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'contato' %}">Contato</a></li>
           <li><a class="getstarted scrollto" href="{% url 'account_login' %}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
             <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
           </svg> Entrar</a></li>

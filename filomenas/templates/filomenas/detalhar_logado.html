@@ -52,10 +52,10 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Detalhes da EStadia</h2>
+          <h2>Detalhes da Estadia</h2>
           <ol>
             <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="{% url 'listar' %}">Produto</a></li>
+            <li><a href="{% url 'listar' %}">Estadia</a></li>
             <li>Detalhes da Estadia</li>
           </ol>
         </div>
@@ -111,7 +111,18 @@
               <div class="swiper-wrapper align-items-center">
 
                 <div class="swiper-slide">
-                  <img src="{{ estadia.imagem.url }}" alt="">
+                  <img src="{{ estadia.imagem.url }}" alt="" class="img-fixed-size">
+                  <style>
+                    .img-fixed-size {
+                        width: 100%; /* Defina o tamanho desejado em pixels ou porcentagem */
+                        height: auto; /* Mantém a proporção original da imagem */
+                        max-width: 600px; /* Limita a largura máxima da imagem, ajuste conforme necessário */
+                        max-height: 400px; /* Limita a altura máxima da imagem, ajuste conforme necessário */
+                        display: block; /* Evita espaçamento extra na parte inferior da imagem */
+                        margin: 0 auto; /* Centraliza a imagem no contêiner pai */
+                    }
+                </style>
+                
                 </div>
 
               </div>
@@ -130,9 +141,34 @@
 
               </ul>
             </div>
-           <br><br><br><br><br>
-            <div class="text-center mt-4">
-              <a href="#" class="btn text-orangee btn-buy">Reservar</a>
+<br><br><br>
+
+          <div class="text-center mt-4">
+            <a href="#" class="btn text-orangee btn-buy" data-bs-toggle="modal" data-bs-target="#reservaModal" data-message="Recebemos sua aquisição. Espere a validação de {{ estadia.filomena }}!">Reservar</a>
+             <!-- Modal -->
+              <div class="modal fade" id="reservaModal" tabindex="-1" aria-labelledby="reservaModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header d-flex align-items-center">
+                      <img src="{% static 'img/logo.png' %}" alt="" class="rounded-circle" style="width: 80px; height: 70px;">
+                      <h5 class="modal-title" id="reservaModalLabel">Reserva de Estadia</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <p><strong>{{ request.user.username|capfirst }}</strong>, sua estadia foi notificada! Aguarde a validação de {{ estadia.filomena }}.</p>
+                  </div>
+                  
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                  
+                      <!-- Botão para acionar a reserva e notificar o usuário -->
+                      <a href="{% url 'reservar_estadia' estadia.pk %}" class="btn text-orangee btn-reserve" data-message="Sua aquisição de estadia foi notificada. Aguarde a validação da reserva">Confirmar</a>
+                  </div>
+                  </div>
+                </div>
+              </div>
+
+
               <a href="{% url 'listar_log'%}" class="btn btn-secondary btn-back">Voltar</a>
           </div>
           </div>

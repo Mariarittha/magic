@@ -61,98 +61,34 @@
               
               <div class="card-body">
                 <div class="author">
-                    <a href="#" class="d-flex flex-column align-items-center">
-                        <img class="avatar border-gray user-image mx-auto" src="{{ hospede.imagem.url }}" alt="Imagem de Perfil" style="width: 300px; height: 300px; border-radius: 50%; overflow: hidden; margin-right: 5px;">
+                  <br>
+                    <a href="{% url 'listar_perfil' %}" class="d-flex flex-column align-items-center">
+                        <img class="avatar border-gray user-image mx-auto" src="{{ hospede.imagem.url }}" alt="Imagem de Perfil" style="width: 300px; height: 250px; border-radius: 50%; overflow: hidden; margin-right: 5px;">
                         <br>
-                        <hr>
-                        <h5 class="title text-center"> @{{ request.user.username|capfirst }}</h5>
+                        <style>
+                          hr {
+                            border: 0.5px solid ; /* Cor da borda */
+                            background-color: #cf6717; /* Cor de fundo */
+                            height: 1px; /* Altura da linha */
+                            }
+                      </style>
+                        <strong><hr></strong>
+                        <style>.d-flex{color:#cf6717;}</style>
+                        <h5 class="title text-center" > @{{ request.user.username|capfirst }}</h5>
                     </a>
                     <p class="description">
                   <hr> 
                  </p>
                 </div>
                 <p class="  text-center">
-                  {{hospede.frase}}
+                  "{{hospede.frase}}"
                 </p>
             </div>
-              <div class="card-footer">
-                <hr>
-                <!-- <div class="button-container">
-                  <div class="row">
-                    <div class="col-lg-3 col-md-6 col-6 ml-auto">
-                      <h5>12<br><small>Files</small></h5>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-6 ml-auto mr-auto">
-                      <h5>2GB<br><small>Used</small></h5>
-                    </div>
-                    <div class="col-lg-3 mr-auto">
-                      <h5>24,6$<br><small>Spent</small></h5>
-                    </div>
-                  </div>
-                </div> -->
-              </div>
+            
             </div>
-            <div class="card">
-              <div class="card-header">
-                <h4 class="card-title">Team Members</h4>
-              </div>
-              <div class="card-body">
-                <ul class="list-unstyled team-members">
-                  <li>
-                    <div class="row">
-                      <div class="col-md-2 col-2">
-                        <div class="avatar">
-                          <img src="../assets/img/faces/ayo-ogunseinde-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
-                        </div>
-                      </div>
-                      <div class="col-md-7 col-7">
-                        DJ Khaled
-                        <br />
-                        <span class="text-muted"><small>Offline</small></span>
-                      </div>
-                      <div class="col-md-3 col-3 text-right">
-                        <btn class="btn btn-sm btn-outline-success btn-round btn-icon"><i class="fa fa-envelope"></i></btn>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="row">
-                      <div class="col-md-2 col-2">
-                        <div class="avatar">
-                          <img src="../assets/img/faces/joe-gardner-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
-                        </div>
-                      </div>
-                      <div class="col-md-7 col-7">
-                        Creative Tim
-                        <br />
-                        <span class="text-success"><small>Available</small></span>
-                      </div>
-                      <div class="col-md-3 col-3 text-right">
-                        <btn class="btn btn-sm btn-outline-success btn-round btn-icon"><i class="fa fa-envelope"></i></btn>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="row">
-                      <div class="col-md-2 col-2">
-                        <div class="avatar">
-                          <img src="../assets/img/faces/clem-onojeghuo-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
-                        </div>
-                      </div>
-                      <div class="col-ms-7 col-7">
-                        Flume
-                        <br />
-                        <span class="text-danger"><small>Busy</small></span>
-                      </div>
-                      <div class="col-md-3 col-3 text-right">
-                        <btn class="btn btn-sm btn-outline-success btn-round btn-icon"><i class="fa fa-envelope"></i></btn>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
+          
           </div>
+          
           <div class="col-md-8">
             <div class="card card-user">
                 <div class="card-header">
@@ -161,62 +97,47 @@
                 <br>
                 <div class="card-body">
                     <table class="table table-bordered">
+                        <colgroup>
+                            <col style="width: 30%;">
+                            <col style="width: 70%;">
+                        </colgroup>
                         <tbody class="A">
                             <tr>
-                                <td><strong style="color: #E28743;">Nome completo:</strong></td>
+                                <td style="border-right: 2px solid #E28743;"><strong style="color: #E28743;">Nome completo:</strong></td>
                                 <td>{{ hospede.nome }}</td>
                             </tr>
                             <tr>
-                                <td><strong style="color: #E28743;">Profissão:</strong></td>
+                                <td style="border-right: 2px solid #E28743;"><strong style="color: #E28743;">Profissão:</strong></td>
                                 <td>{{ hospede.profissao }}</td>
                             </tr>
                             <tr>
-                                <td><strong style="color: #E28743;">Email:</strong></td>
+                                <td style="border-right: 2px solid #E28743;"><strong style="color: #E28743;">Email:</strong></td>
                                 <td>{{ hospede.email }}</td>
                             </tr>
                             <tr>
-                                <td><strong style="color: #E28743;">Telefone:</strong></td>
+                                <td style="border-right: 2px solid #E28743;"><strong style="color: #E28743;">Telefone:</strong></td>
                                 <td>{{ hospede.telefone }}</td>
                             </tr>
                             <tr>
-                                <td><strong style="color: #E28743;">Sobre mim:</strong></td>
+                                <td style="border-right: 2px solid #E28743;"><strong style="color: #E28743;">Sobre mim:</strong></td>
                                 <td>{{ hospede.sobre_mim }}</td>
                             </tr>
                         </tbody>
                     </table>
         
                     <div class="row">
-                        <style>
-                            .custom-orange-btn {
-                                background-color: #E28743; /* Cor laranja - ajuste conforme necessário */
-                                color: #fff;
-                                /* Cor do texto */
-                                /* Outros estilos, se necessário */
-                            }
-        
-                            .custom-orange-btn:hover,
-                            .A {
-                                background-color: #cf6717; /* Cor mais escura no hover - ajuste conforme necessário */
-                                color: #fff;
-                            }
-        
-                            .table td {
-                                border: none;
-                            }
-        
-                            .table th, .table td {
-                                border-top: 1px solid #E28743; /* Adiciona borda nas células */
-                            }
-        
-                        </style>
-        
+                        <!-- Seu estilo CSS aqui -->
                         <div class="update ml-auto mr-auto text-center">
-                            <a href="{% url 'editar_perfil' hospede.pk %}" class="btn custom-orange-btn btn-round" >Editar</a>
-                        </div>
+                          <br>
+                            <a href="{% url 'editar_perfil' hospede.pk %}" class="btn custom-orange-btn btn-round">Editar</a>
+                        <br><br>
+
+                          </div>
                     </div>
                 </div>
             </div>
         </div>
+        
         
         <script>
             function editarPerfil() {

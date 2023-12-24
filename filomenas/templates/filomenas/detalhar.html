@@ -111,7 +111,18 @@
               <div class="swiper-wrapper align-items-center">
 
                 <div class="swiper-slide">
-                  <img src="{{ estadia.imagem.url }}" alt="">
+                  <img src="{{ estadia.imagem.url }}" alt="" class="img-fixed-size">
+                  <style>
+                    .img-fixed-size {
+                        width: 100%; /* Defina o tamanho desejado em pixels ou porcentagem */
+                        height: auto; /* Mantém a proporção original da imagem */
+                        max-width: 600px; /* Limita a largura máxima da imagem, ajuste conforme necessário */
+                        max-height: 400px; /* Limita a altura máxima da imagem, ajuste conforme necessário */
+                        display: block; /* Evita espaçamento extra na parte inferior da imagem */
+                        margin: 0 auto; /* Centraliza a imagem no contêiner pai */
+                    }
+                </style>
+                
                 </div>
 
               </div>
