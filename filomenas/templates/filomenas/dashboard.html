@@ -29,9 +29,24 @@
       {% endfor %}
     {% endif %} -->
     <br><br>
-    <img src="{% static 'img/estampa.png' %}" alt="FOTO-DO-TERREIRO" style="width: 100%; filter: blur(1px); height: 20px;" />
   
-  
+    {% for notification in notifications %}
+    {% if notification.estadia %}
+    <script>
+        console.log("Notificação no dashboard:", "{{ notification.message }}");
+    </script>
+        <div>
+            <p>{{ notification.message }}</p>
+            <a href="{% url 'aceitar_reserva' notification.estadia.pk %}">Aceitar</a>
+            <a href="{% url 'recusar_reserva' notification.estadia.pk %}">Recusar</a>
+        </div>
+        <!-- Adicione a linha abaixo para depurar -->
+        <p>Debug: {{ notification.message }}, {{ notification.estadia.pk }}</p>
+    {% endif %}
+{% endfor %}
+
+
+
 
 
    <!-- ======= Portfolio Section ======= -->

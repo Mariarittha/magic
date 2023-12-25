@@ -13,6 +13,10 @@ urlpatterns = [
     path('', views.index.as_view(), name='home'),
     path('index', views.index_logado.as_view(), name='home_logado'),
     
+    path('aceitar_reserva/<int:estadia_id>/', views.aceitar_reserva, name='aceitar_reserva'),
+    path('recusar_reserva/<int:estadia_id>/', views.recusar_reserva, name='recusar_reserva'),
+    
+    
     # paginas estaticas
     path('contato/log', views.contato_log.as_view(), name='contato_log'),
     path('contato/', views.contato.as_view(), name='contato'),
@@ -26,6 +30,9 @@ urlpatterns = [
     path('listar/filo', views.Listarfilom.as_view(), name='listar_fil'),
     path('listar/filo_nao', views.Listarfilom_nao.as_view(), name='listar_fil_nao'),
     path('dashboard/', views.dashboardestadia.as_view(), name='dashboard'),
+    
+    path('Perfil/', views.PerfilView.as_view(), name='perfi'),
+
     
     # Criar
     path('criar_hospede/', views.Criarhospede.as_view(), name="criar_hosp"),

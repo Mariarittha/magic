@@ -1,17 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
-class Notification(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    message = models.TextField()
-    is_read = models.BooleanField(default=False)
-    created_at = models.DateTimeField(auto_now_add=True)
-    
-    def mark_as_read(self):
-        self.is_read = True
-        self.save()
-
-
+        
 class Produtos(models.Model):
     nome = models.CharField(max_length=120)
     preco = models.FloatField()
@@ -54,4 +43,14 @@ class Estadia(models.Model):
     valor = models.DecimalField(verbose_name=("valor"), decimal_places=2, max_digits=6)    
     programacao = models.CharField(max_length=1000, null=True)
 
+class Notification(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    message = models.TextField()
+    is_read = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    estadia = models.ForeignKey(Estadia, on_delete=models.CASCADE, null=True, blank=True)  # Adicione essa linha
+
     
+    def mark_as_read(self):
+        self.is_read = True
+        self.save()
