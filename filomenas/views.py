@@ -90,7 +90,25 @@ class ListarEstadia( generic.ListView):
     model = Estadia
     template_name = 'filomenas/listar_pacotes.html'
     context_object_name = 'estadias'
-    paginate_by = 3
+    paginate_by = 6
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        search_valor_min = self.request.GET.get('search_valor_min', None)
+        search_valor_max = self.request.GET.get('search_valor_max', None)
+        
+        if search_valor_min and search_valor_max:
+            # Filtrar por valor mínimo e máximo
+            queryset = queryset.filter(valor__range=(Decimal(search_valor_min), Decimal(search_valor_max)))
+        
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['search_valor_min'] = self.request.GET.get('search_valor_min', '')
+        context['search_valor_max'] = self.request.GET.get('search_valor_max', '')
+        return context
+
     
 class ListarEstadialoga(generic.ListView):
     model = Estadia
