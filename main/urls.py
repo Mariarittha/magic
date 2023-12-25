@@ -9,6 +9,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')), 
     path('notifications/', views.notifications, name='notifications'),
     path('get-notification-count/', views.get_notification_count, name='get_notification_count'),
+
     path('', views.index.as_view(), name='home'),
     path('index', views.index_logado.as_view(), name='home_logado'),
     

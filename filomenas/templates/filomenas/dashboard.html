@@ -48,8 +48,17 @@
             <div class="col-md-4">
               <div class="m-5">
                 <div class="card" style="width: 18rem;">
-                  <img src="{{ estadia.imagem.url }}" alt="Imagem da Estadia" >
-                  <div class="card-body">
+                  <img src="{{ estadia.imagem.url }}" alt="Imagem da Estadia" class="img-fluid estadia-image" >
+                        <style>
+                            .estadia-image {
+                            width: 300px; /* Largura desejada */
+                            height: 200px; /* Altura desejada */
+                            object-fit: cover; /* Redimensiona a imagem mantendo a proporção e cobrindo a área especificada */
+                            /* Adicione outros estilos conforme necessário */
+                        }
+
+                        </style>
+                <div class="card-body">
                     <h5 class="card-title text-orangee"><strong>Nome da Estadia:</strong> <strong>{{ estadia.nome }}</strong></h5>
                     <p class="card-text"><strong>Filomena:</strong> {{estadia.filomena}}</p>
                     <p class="card-text"><strong>Duração:</strong> {{estadia.duracao}}</p>
@@ -68,60 +77,54 @@
                         </svg>
                     </a>
                    
-                 
-
-                    <button class="btn btn-" type="button" aria-label="excluir" title="excluir"
-                        data-bs-toggle="modal" data-bs-target="#deleteModal" data-estadia-pk="{{ estadia.pk }}"
-                        data-apagar-estadia-url="{% url 'apagar_estadia' estadia.pk %}">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3"
+                    <button class="btn btn" type="button" aria-label="excluir" title="excluir"
+                    data-bs-toggle="modal" data-bs-target="#deleteModal" data-estadia-pk="{{ estadia.pk }}"
+                    data-apagar-estadia-url="{% url 'apagar_estadia' estadia.pk %}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3"
                         viewBox="0 0 16 16">
-                        <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5" />
-                         </svg>
+                        <path
+                            d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5" />
+                    </svg>
                     </button>
 
-
-<!-- Modal de Exclusão -->
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-          <div class="modal-header">
-              <img src="{% static 'img/logo.png' %}" alt="" class="rounded-circle" style="width: 80px; height: 70px;">
-              <h5 class="modal-title" id="deleteModalLabel"><strong>Filomenas</strong></h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
-          </div>
-          <div class="modal-body">
-              <p>Você tem certeza de que deseja apagar esta estadia?</p>
-          </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-              <button type="button" class="btn btn-danger" id="confirmDelete">Excluir</button>
-          </div>
-      </div>
-  </div>
+                    
+   <!-- Modal de Exclusão -->
+   <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="{% static 'img/logo.png' %}" alt="" class="rounded-circle" style="width: 80px; height: 70px;">
+                <h5 class="modal-title" id="deleteModalLabel"><strong>Filomenas</strong></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body">
+                <p>Você tem certeza de que deseja apagar esta estadia?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" id="confirmDelete">Excluir</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
-  // Adiciona um ouvinte de evento para acionar a submissão do formulário ao clicar em Excluir
-  document.getElementById('confirmDelete').addEventListener('click', function () {
-      // Obtém a URL de exclusão do botão de exclusão clicado
-      var deleteUrl = document.getElementById('deleteModal').getAttribute('data-apagar-estadia-url');
-      // Define a ação do formulário como a URL de exclusão obtida
-      document.getElementById('deleteForm').setAttribute('action', deleteUrl);
-      // Submete o formulário
-      document.getElementById('deleteForm').submit();
-  });
+    // Adiciona um ouvinte de evento para acionar a submissão do formulário ao clicar em Excluir
+    document.getElementById('confirmDelete').addEventListener('click', function () {
+        document.getElementById('deleteForm').submit();
+    });
 </script>
 
-
-
 <!-- Formulário de Exclusão -->
-<form id="deleteForm" method="post" action="#" style="display: none;">
-  {% csrf_token %}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
+<form id="deleteForm" method="post" action="{% url 'apagar_estadia' estadia.pk %}"
+    style="display: none;">
+    {% csrf_token %}
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {% endif %}
 </form>
 
+      
 
                  </div>
                  <br>

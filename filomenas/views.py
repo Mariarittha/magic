@@ -12,9 +12,8 @@ from django.contrib.auth.decorators import login_required
 from .models import Notification
 from django.shortcuts import render
 from django.contrib import messages
-
+from decimal import Decimal
 from django.contrib.messages import get_messages
-# views.py - notifications
 from django.contrib import messages
 from django.http import JsonResponse
 
@@ -93,11 +92,29 @@ class ListarEstadia( generic.ListView):
     context_object_name = 'estadias'
     paginate_by = 3
     
-class ListarEstadialoga( generic.ListView):
+class ListarEstadialoga(generic.ListView):
     model = Estadia
     template_name = 'filomenas/listar_pacotes_logado.html'
     context_object_name = 'estadias'
-    paginate_by = 3
+    paginate_by = 6
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        search_valor_min = self.request.GET.get('search_valor_min', None)
+        search_valor_max = self.request.GET.get('search_valor_max', None)
+        
+        if search_valor_min and search_valor_max:
+            # Filtrar por valor mínimo e máximo
+            queryset = queryset.filter(valor__range=(Decimal(search_valor_min), Decimal(search_valor_max)))
+        
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['search_valor_min'] = self.request.GET.get('search_valor_min', '')
+        context['search_valor_max'] = self.request.GET.get('search_valor_max', '')
+        return context
+
 
 class CriarEstadia( views.SuccessMessageMixin, generic.CreateView):
     model = Estadia
@@ -134,7 +151,7 @@ def reservar_estadia(request, estadia_id):
     # Adicione a mensagem de sucesso
 
     # Crie a instância de Notification
-    Notification.objects.create(user=request.user, message=f"Sua aquisição de estadia foi notificada. Aguarde a validação de {estadia.filomena}!", is_read=False)
+    Notification.objects.create(user=request.user, message=f"{estadia.nome}: Sua aquisição de estadia foi notificada. Aguarde a validação de {estadia.filomena}!", is_read=False)
 
     return render(request, 'filomenas/detalhar_logado.html', {'estadia': estadia})
     

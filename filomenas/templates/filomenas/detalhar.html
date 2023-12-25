@@ -137,14 +137,14 @@
                 <li><strong>Valor:</strong> R$ {{ estadia.valor }}</li>
                 <li><strong>Duração:</strong> {{ estadia.duracao }} dias</li>
                 <li><strong>Localização:</strong> {{ estadia.localizacao }}</li>
-
+                <br><br>
+                <div class="text-center mt-4">
+                  <a href="{% url 'account_login' %}" class="btn text-orangee btn-buy">Reservar</a>
+                  <a href="{% url 'listar'%}" class="btn btn-secondary btn-back">Voltar</a>
+              </div>
               </ul>
             </div>
-           <br><br><br><br><br>
-            <div class="text-center mt-4">
-              <a href="{% url 'account_login' %}" class="btn text-orangee btn-buy">Reservar</a>
-              <a href="{% url 'listar'%}" class="btn btn-secondary btn-back">Voltar</a>
-          </div>
+           
           </div>
 
         </div>

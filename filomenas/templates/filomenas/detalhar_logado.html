@@ -138,39 +138,41 @@
                 <li><strong>Filomena:</strong> {{ estadia.filomena }}</li>
                 <li><strong>Duração:</strong> {{ estadia.duracao }} dias</li>
                 <li><strong>Localização:</strong> {{ estadia.localizacao }}</li>
+                <br>
+                <div class="text-center mt-4">
+                  <a href="#" class="btn text-orangee btn-buy" data-bs-toggle="modal" data-bs-target="#reservaModal" data-message="Recebemos sua aquisição. Espere a validação de {{ estadia.filomena }}!">Reservar</a>
+                   <!-- Modal -->
+                    <div class="modal fade" id="reservaModal" tabindex="-1" aria-labelledby="reservaModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header d-flex align-items-center">
+                            <img src="{% static 'img/logo.png' %}" alt="" class="rounded-circle" style="width: 80px; height: 70px;">
+                            <h5 class="modal-title" id="reservaModalLabel">Reserva de Estadia</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <p><strong>{{ request.user.username|capfirst }}</strong>, sua estadia será notificada! Confirme sua aquisição. </p>
+                        </div>
+                        
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                        
+                            <!-- Botão para acionar a reserva e notificar o usuário -->
+                            <a href="{% url 'reservar_estadia' estadia.pk %}" class="btn text-orangee btn-reserve" data-message="Sua aquisição de estadia foi notificada. Aguarde a validação da reserva">Confirmar</a>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+      
+      
+                    <a href="{% url 'listar_log'%}" class="btn btn-secondary btn-back">Voltar</a>
+                </div>
 
               </ul>
             </div>
 <br><br><br>
 
-          <div class="text-center mt-4">
-            <a href="#" class="btn text-orangee btn-buy" data-bs-toggle="modal" data-bs-target="#reservaModal" data-message="Recebemos sua aquisição. Espere a validação de {{ estadia.filomena }}!">Reservar</a>
-             <!-- Modal -->
-              <div class="modal fade" id="reservaModal" tabindex="-1" aria-labelledby="reservaModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                  <div class="modal-content">
-                    <div class="modal-header d-flex align-items-center">
-                      <img src="{% static 'img/logo.png' %}" alt="" class="rounded-circle" style="width: 80px; height: 70px;">
-                      <h5 class="modal-title" id="reservaModalLabel">Reserva de Estadia</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      <p><strong>{{ request.user.username|capfirst }}</strong>, sua estadia foi notificada! Aguarde a validação de {{ estadia.filomena }}.</p>
-                  </div>
-                  
-                  <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                  
-                      <!-- Botão para acionar a reserva e notificar o usuário -->
-                      <a href="{% url 'reservar_estadia' estadia.pk %}" class="btn text-orangee btn-reserve" data-message="Sua aquisição de estadia foi notificada. Aguarde a validação da reserva">Confirmar</a>
-                  </div>
-                  </div>
-                </div>
-              </div>
-
-
-              <a href="{% url 'listar_log'%}" class="btn btn-secondary btn-back">Voltar</a>
-          </div>
+          
           </div>
 
         </div>
